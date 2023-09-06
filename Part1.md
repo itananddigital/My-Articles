@@ -4,8 +4,6 @@ We will setup the following:
 - Install docker and docker compose v2 on linux server.
 - Install traefik service for internal load balancer and letsencrypt.
 - Install MariaDB with containers.
-- Setup project called `erpnext-one` and create sites `one.example.com` and `two.example.com` in the project.
-- Setup project called `erpnext-two` and create sites `three.example.com` and `four.example.com` in the project.
 
 Explanation:
 
