@@ -62,21 +62,7 @@ Create a file called `traefik.env` in `~/gitops`
 ```shell
 echo 'TRAEFIK_DOMAIN=traefik.example.com' > ~/gitops/traefik.env
 echo 'EMAIL=admin@example.com' >> ~/gitops/traefik.env
-echo 'HASHED_PASSWORD='$(openssl passwd -apr1 changeit | sed 's/\$/\\\$/g') >> ~/gitops/traefik.env
-```
-
-Note:
-
-- Change the domain from `traefik.example.com` to the one used in production. DNS entry needs to point to the Server IP.
-- Change the letsencrypt notification email from `admin@example.com` to correct email.
-- Change the password from `changeit` to more secure.
-
-env file generated at location `~/gitops/traefik.env` will look like following:
-
-```env
-TRAEFIK_DOMAIN=traefik.example.com
-EMAIL=admin@example.com
-HASHED_PASSWORD=$apr1$K.4gp7RT$tj9R2jHh0D4Gb5o5fIAzm/
+echo 'HASHED_PASSWORD='$(openssl passwd -apr1 YOUR_PASSWORD | sed 's/\$/\\\$/g') >> ~/gitops/traefik.env
 ```
 
 Deploy the traefik container with letsencrypt SSL
@@ -99,25 +85,5 @@ Basic MariaDB setup using docker compose.
 Create a file called `mariadb.env` in `~/gitops`
 
 ```shell
-echo "DB_PASSWORD=changeit" > ~/gitops/mariadb.env
+echo "DB_PASSWORD=YOUR_PASSWORD" > ~/gitops/mariadb.env
 ```
-
-Note:
-
-- Change the password from `changeit` to more secure.
-
-env file generated at location `~/gitops/mariadb.env` will look like following:
-
-```env
-DB_PASSWORD=changeit
-```
-
-Note: Change the password from `changeit` to more secure one.
-
-Deploy the mariadb container
-
-```shell
-docker compose --project-name mariadb --env-file ~/gitops/mariadb.env -f overrides/compose.mariadb-shared.yaml up -d
-```
-
-This will make `mariadb-database` service available under `mariadb-network`. Data will reside in `/data/mariadb`.
