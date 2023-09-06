@@ -85,3 +85,7 @@ Create a file called `mariadb.env` in `~/gitops`
 ```shell
 echo "DB_PASSWORD=YOUR_PASSWORD" > ~/gitops/mariadb.env
 ```
+
+```shell
+docker compose --project-name mariadb --env-file ~/gitops/mariadb.env -f overrides/compose.mariadb-shared.yaml up -d
+```
