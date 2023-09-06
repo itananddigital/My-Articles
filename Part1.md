@@ -89,3 +89,25 @@ echo "DB_PASSWORD=YOUR_PASSWORD" > ~/gitops/mariadb.env
 ```shell
 docker compose --project-name mariadb --env-file ~/gitops/mariadb.env -f overrides/compose.mariadb-shared.yaml up -d
 ```
+
+### Create a Persistent Volume
+
+Create a persistent volume to store your site data
+
+```shell
+$ sudo mkdir -p /mnt/data/sites
+```
+Set the required permissions:
+
+```shell
+$ sudo chmod 775 -R /mnt/data
+$ sudo chown -R $USER:docker /mnt/data
+```
+Now, create the Docker volume for your sites:
+
+```shell
+$ docker volume create --driver local \
+--opt type=none \
+--opt device=/mnt/data/sites \
+--opt o=bind sites
+```
