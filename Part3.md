@@ -43,7 +43,7 @@ Deploy `erpnext-one` containers:
 docker compose --project-name erpnext-one -f ~/gitops/erpnext-one.yaml up -d
 ```
 
-Create sites `one.example.com` and `two.example.com`:
+Create sites `test1.8848digital.com` and `test1.8848digital.com`:
 
 ```shell
 # test1.8848digital.com
