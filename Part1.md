@@ -4,6 +4,7 @@ We will setup the following:
 - Install docker and docker compose v2 on linux server.
 - Install traefik service for internal load balancer and letsencrypt.
 - Install MariaDB with containers.
+- Persistent Volume for site data
 
 Explanation:
 
