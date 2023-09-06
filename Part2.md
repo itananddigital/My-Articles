@@ -11,27 +11,26 @@ cd frappe_docker
 
 ```shell
 export APPS_JSON='[
-  {
-    "url": "https://github.com/frappe/payments",
-    "branch": "develop"
-  },
-  {
-    "url": "https://github.com/frappe/erpnext",
-    "branch": "version-14"
-  },
-  {
-    "url": "https://user:password@git.example.com/project/repository.git",
-    "branch": "main"
-  }
+    {
+        "url": "https://github.com/frappe/payments",
+        "branch": "develop"
+    },
+    {
+        "url": "https://github.com/frappe/erpnext",
+        "branch": "version-14"
+    },
+    {
+        "url": "https://github.com/frappe/hrms",
+        "branch": "version-14"
+    },
+    {
+        "url": "https://github.com/itanand/custom_app.git",
+        "branch": "master"
+    }
 ]'
 export APPS_JSON_BASE64=$(echo ${APPS_JSON} | base64 -w 0)
 ```
 
-You can also generate base64 string from json file:
-
-```shell
-export APPS_JSON_BASE64=$(base64 -w 0 /path/to/apps.json)
-```
 
 Note:
 
